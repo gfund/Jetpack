@@ -46,9 +46,12 @@ def install():
   return
  else:
      fancytyping(f"There was an error during the install :(.Trying again!")
+
 def installloop():
  global installationsuccessful
  #print(util.checkinstall()) 
  if(not checkinstall()):
   while (not installationsuccessful):
    install()
+ else:
+   return 1

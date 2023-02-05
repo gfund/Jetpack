@@ -3,9 +3,17 @@ import sys
 import subprocess 
 import os
 import platform
+import apps
+import json
+import classes
+
 
 def makedirectory():
-    os.mkdir("Files")
+    #Lazy Implementation So Far
+    try:
+     os.mkdir("Files")
+    except:
+        pass
 #do fancy character by character typing
 def fancytyping(message:str):
 
@@ -30,17 +38,34 @@ def packageinstall(packages):
     for package in packages:
         subprocess.call(['pip', 'install',package])
         print(f"Installing {package}")
-
+def getcurrentdir():
+    return os.getcwd()
 def getplatform():
     return platform.system()
+def getfilesep():
+     #              Windows                                Linux and Mac
+     filepathseparator= "\\" if(getplatform()=="Windows") else "/"
+     return filepathseparator
 def checkinstall():
     cwd=os.getcwd()
     #get file path separator by system
-    #              Windows                                Linux and Mac
-    filepathseparator= "\\" if(getplatform()=="Windows") else "/"
+   
+    filepathseparator= getfilesep()
 
     
     fpath=cwd+filepathseparator+"userfile.json"
     
     return os.path.isfile(fpath)
+    
+def switch(category,option):
+    if(category=="apps"):
+        if(option=="calculator"):
+            apps.calculator()
+        elif(option=="word"):
+            apps.wordprocessor()
+
+def filesave(fname):
+    installpath=2
+    os.chdir()
+
     

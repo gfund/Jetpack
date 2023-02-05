@@ -1,6 +1,8 @@
 
 import json
-import util
+import os
+import platform
+
 class LearningPlatform:
 
     name=""
@@ -14,11 +16,13 @@ class LearningPlatform:
      
 class User:
     name=""
+    
     os=""
     email=""
     school=""
     connections=[]
     lplatform=LearningPlatform("","")
+    folderpath=""
     
         
     def __init__(self, name, email,school,strlplatform):
@@ -27,6 +31,7 @@ class User:
      self.email = email
      self.school=school
      self.connections=[]
+     self.folderpath=os.getcwd()
      try:
   
       self.lplatform=LearningPlatform(strlplatform.split(",")[0],strlplatform.split(",")[1]) #initialize learning platform
@@ -42,14 +47,31 @@ class User:
   "email": self.email,
   "school":self.school,
   "connections":self.connections,
+  "folderpath":self.folderpath,
   "lplatform":self.lplatform.serialize()} 
         try:
           storagefile=open("userfile.json", "w+")
           json.dump(uservars, storagefile)
           return 1
         except Exception as e:
-          print(e)
-          util.fancytyping("Well thats unfortunate! Something went wrong with storing your data :(")
+          pass
+          # print(e)
+         
 
+    def userdataread(self,query):
+        filepathseparator= "\\" if(platform.system()=="Windows") else "/"
+        filesep=filepathseparator
+        userfile = open(f"{self.folderpath+filesep}userfile.json")
+        data = json.load(userfile)
+        return data[query]
+   
+    def getuser():
+        folderpath=os.getcwd()
+        filepathseparator= "\\" if(platform.system()=="Windows") else "/"
+        filesep=filepathseparator
+        userfile = open(f"{folderpath+filesep}userfile.json")
+        data = json.load(userfile)
+        print(data)
+        #u=User()
 
 
