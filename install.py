@@ -42,12 +42,13 @@ def install():
  if(rtrn):
   fancytyping(f"Hello {userfields[0]}, glad to have you!")
   installationsuccessful=True
+  makedirectory()
   return
  else:
      fancytyping(f"There was an error during the install :(.Trying again!")
 def installloop():
  global installationsuccessful
  #print(util.checkinstall()) 
- if(not util.checkinstall()):
+ if(not checkinstall()):
   while (not installationsuccessful):
    install()

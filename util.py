@@ -3,6 +3,9 @@ import sys
 import subprocess 
 import os
 import platform
+
+def makedirectory():
+    os.mkdir("Files")
 #do fancy character by character typing
 def fancytyping(message:str):
 

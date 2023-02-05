@@ -23,7 +23,7 @@ class User:
         
     def __init__(self, name, email,school,strlplatform):
      self.name = name
-     self.os=util.getplatform()
+    
      self.email = email
      self.school=school
      self.connections=[]
@@ -39,7 +39,6 @@ class User:
         
         uservars ={ 
   "name": self.name, 
-  "os": self.os, 
   "email": self.email,
   "school":self.school,
   "connections":self.connections,
