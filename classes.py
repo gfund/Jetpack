@@ -1,4 +1,4 @@
-import platform
+
 import json
 import util
 class LearningPlatform:
@@ -23,7 +23,7 @@ class User:
         
     def __init__(self, name, email,school,strlplatform):
      self.name = name
-     self.os=platform.system()
+     self.os=util.getplatform()
      self.email = email
      self.school=school
      self.connections=[]

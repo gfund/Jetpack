@@ -1,4 +1,3 @@
-import subprocess #not used yet
 import sys
 #Class Files
 from classes import *
@@ -25,6 +24,8 @@ logo="""
 
 #look for user file and if not present, do intro
 def install(): 
+
+ 
  global installationsuccessful
 
 
@@ -34,7 +35,7 @@ def install():
  
  u=User(userfields[0],userfields[1],userfields[2],userfields[3]) #create new instance of user 
  if(u.name=="Error"):
-    #save input and stop
+    #stop
     return
  rtrn=u.store()
  
@@ -42,5 +43,11 @@ def install():
   fancytyping(f"Hello {userfields[0]}, glad to have you!")
   installationsuccessful=True
   return
-while (not installationsuccessful):
- install()
+ else:
+     fancytyping(f"There was an error during the install :(.Trying again!")
+def installloop():
+ global installationsuccessful
+ util.checkinstall()
+ if(not util.checkinstall()):
+  while (not installationsuccessful):
+   install()

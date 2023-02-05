@@ -1,5 +1,8 @@
 import time
 import sys
+import subprocess 
+import os
+import platform
 #do fancy character by character typing
 def fancytyping(message:str):
 
@@ -7,6 +10,7 @@ def fancytyping(message:str):
         sys.stdout.write(i+ " ")
         sys.stdout.flush()
         time.sleep(0.15)
+
 #take multiple lines of input with one function
 def multiinput(numfieldstoexpect,questions):
    answers=[]
@@ -17,4 +21,23 @@ def multiinput(numfieldstoexpect,questions):
   
     
    return answers
-      
+
+#install packages during runtime 
+def packageinstall(packages):
+    for package in packages:
+        subprocess.call(['pip', 'install',package])
+        print(f"Installing {package}")
+
+def getplatform():
+    return platform.system()
+def checkinstall():
+    cwd=os.getcwd()
+    #get file path separator by system
+    #              Windows                                Linux and Mac
+    filepathseparator= "\\" if(getplatform()=="Windows") else "/"
+
+    
+    fpath=cwd+filepathseparator+"userfile.json"
+    
+    return os.path.isfile(cwd+"userfile.json")
+    
