@@ -1,6 +1,5 @@
 import install
 import util
 
-#install.installloop()
+install.installloop()
 
-util.checkinstall()

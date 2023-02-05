@@ -39,5 +39,5 @@ def checkinstall():
     
     fpath=cwd+filepathseparator+"userfile.json"
     
-    return os.path.isfile(cwd+"userfile.json")
+    return os.path.isfile(fpath)
     

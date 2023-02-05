@@ -47,7 +47,7 @@ def install():
      fancytyping(f"There was an error during the install :(.Trying again!")
 def installloop():
  global installationsuccessful
- util.checkinstall()
+ #print(util.checkinstall()) 
  if(not util.checkinstall()):
   while (not installationsuccessful):
    install()
