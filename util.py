@@ -6,7 +6,7 @@ def fancytyping(message:str):
     for i in message:
         sys.stdout.write(i+ " ")
         sys.stdout.flush()
-        time.sleep(0.25)
+        time.sleep(0.15)
 #take multiple lines of input with one function
 def multiinput(numfieldstoexpect,questions):
    answers=[]

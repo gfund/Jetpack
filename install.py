@@ -1,8 +1,10 @@
 import subprocess #not used yet
+import sys
 #Class Files
 from classes import *
 from util import *
-
+global installationsuccessful
+installationsuccessful=False
 logo="""
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠉⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -23,6 +25,7 @@ logo="""
 
 #look for user file and if not present, do intro
 def install(): 
+ global installationsuccessful
 
 
  print(f"\n {logo}")
@@ -30,7 +33,14 @@ def install():
  userfields=multiinput(4,["What is your name?","What is your email? (For notification purposes)","What school do you attend?(Relevant Content)","If you wish to hook up your Learning Platform to Jetpack,insert the name of the platform ie Canvas and the API Key."])
  
  u=User(userfields[0],userfields[1],userfields[2],userfields[3]) #create new instance of user 
+ if(u.name=="Error"):
+    #save input and stop
+    return
  rtrn=u.store()
+ 
  if(rtrn):
-  fancytyping(f"Hello {userfields[0]}!")
-install()
+  fancytyping(f"Hello {userfields[0]}, glad to have you!")
+  installationsuccessful=True
+  return
+while (not installationsuccessful):
+ install()

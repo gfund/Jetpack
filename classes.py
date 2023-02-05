@@ -19,18 +19,22 @@ class User:
     school=""
     connections=[]
     lplatform=LearningPlatform("","")
-
+    
+        
     def __init__(self, name, email,school,strlplatform):
      self.name = name
      self.os=platform.system()
      self.email = email
      self.school=school
      self.connections=[]
-     
+     try:
   
-     self.lplatform=LearningPlatform(strlplatform.split(",")[0],strlplatform.split(",")[1]) #initialize learning platform
+      self.lplatform=LearningPlatform(strlplatform.split(",")[0],strlplatform.split(",")[1]) #initialize learning platform
+     except Exception as e:
+        
+        print("Oops you did not put a comma between the Learning Platform Name and your API Key :(, Installation will now restart")
+        self.name="Error"
 
-    #store the user object 
     def store(self):
         
         uservars ={ 
