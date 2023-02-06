@@ -8,6 +8,8 @@ import json
 import classes
 
 
+
+
 def makedirectory():
     #Lazy Implementation So Far
     try:
@@ -63,6 +65,10 @@ def switch(category,option):
             apps.calculator()
         elif(option=="word"):
             apps.wordprocessor()
+        elif(option=="notes"):
+            apps.classnotes()
+        elif(option=="google"):
+            apps.terminalbrowser()
 
 def filesave(fname):
     installpath=2

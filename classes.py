@@ -6,13 +6,15 @@ import platform
 class LearningPlatform:
 
     name=""
+    apiurl=""
     apikey=""
      
-    def __init__(self, name, apikey):
+    def __init__(self, name,apiurl, apikey):
         self.name=name
+        self.apiurl=apiurl
         self.apikey=apikey
     def serialize(self):
-        return f"{self.name},{self.apikey}"
+        return f"{self.name},{self.apiurl},{self.apikey}"
      
 class User:
     name=""
@@ -34,10 +36,10 @@ class User:
      self.folderpath=os.getcwd()
      try:
   
-      self.lplatform=LearningPlatform(strlplatform.split(",")[0],strlplatform.split(",")[1]) #initialize learning platform
+      self.lplatform=LearningPlatform(strlplatform.split(",")[0],strlplatform.split(",")[1],strlplatform.split(",")[2]) #initialize learning platform
      except Exception as e:
         
-        print("Oops you did not put a comma between the Learning Platform Name and your API Key :(, Installation will now restart")
+        print("Oops you did not put a comma between the Learning Platform Name, API URL and your API Key :(, Installation will now restart")
         self.name="Error"
 
     def store(self):
@@ -71,7 +73,5 @@ class User:
         filesep=filepathseparator
         userfile = open(f"{folderpath+filesep}userfile.json")
         data = json.load(userfile)
-        print(data)
-        #u=User()
-
-
+        u=User(data['name'],data['email'],data['school'],data['lplatform'])
+        return u

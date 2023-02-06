@@ -2,6 +2,8 @@
 
 # import everything from tkinter module
 from tkinter import *
+import datetime
+import os
 
 # globally declare the expression variable
 expression = ""
@@ -211,3 +213,26 @@ def wordprocessor():
   
     
     gui.mainloop()
+
+
+def classnotes():
+      subject=input("What subject>")
+      curddir=os.getcwd()
+      os.chdir("Files")
+      date=datetime.date.today().strftime("%B %d, %Y")
+      filedate=datetime.date.today().strftime("%m%d%Y")
+      if(filedate[0]=='0'):
+        filedate=filedate[1:len(filedate)-1]
+      file=open(f"{subject} {filedate}notes.md","w+")
+      file.write(f"# {subject} {date} Notes\n")
+      file.close()
+      os.chdir(curddir)
+      print("File made! :)")
+def terminalbrowser():
+    query=input("Google >")
+    from search import search as google
+    google(query)
+    
+      
+
+
