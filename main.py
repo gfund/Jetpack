@@ -13,8 +13,11 @@ def programselection():
 
 if(installdone):
     u=classes.User.getuser()
-    if(u.lplatform.name=="Cavnvas"):
-        util.packageinstall("canvas")
+    if(u.lplatform.name=="Canvas"):
+        if(not u.lplatform.issetup):
+         util.packageinstall(["canvasapi"])
+         u.lplatform.issetup=1
+         u.store()
     util.fancytyping(f"Hello {u.name} \n")
     print("\n")
     programselection()

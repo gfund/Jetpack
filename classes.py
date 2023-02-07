@@ -6,15 +6,19 @@ import platform
 class LearningPlatform:
 
     name=""
+    uid=0
     apiurl=""
     apikey=""
+    issetup=0
      
-    def __init__(self, name,apiurl, apikey):
+    def __init__(self, name,uid,apiurl, apikey,issetup):
         self.name=name
+        self.uid=uid
         self.apiurl=apiurl
         self.apikey=apikey
+        self.issetup=issetup
     def serialize(self):
-        return f"{self.name},{self.apiurl},{self.apikey}"
+        return f"{self.name},{self.uid},{self.apiurl},{self.apikey},{self.issetup}"
      
 class User:
     name=""
@@ -23,7 +27,7 @@ class User:
     email=""
     school=""
     connections=[]
-    lplatform=LearningPlatform("","")
+    lplatform=LearningPlatform("",0,"","",0)
     folderpath=""
     
         
@@ -36,9 +40,11 @@ class User:
      self.folderpath=os.getcwd()
      try:
   
-      self.lplatform=LearningPlatform(strlplatform.split(",")[0],strlplatform.split(",")[1],strlplatform.split(",")[2]) #initialize learning platform
+      
+      self.lplatform=LearningPlatform(strlplatform.split(",")[0],int(strlplatform.split(",")[1]),strlplatform.split(",")[2],strlplatform.split(",")[3],int(strlplatform.split(",")[4])) #initialize learning platform
+      #print(self.lplatform.serialize())
      except Exception as e:
-        
+        print(e)
         print("Oops you did not put a comma between the Learning Platform Name, API URL and your API Key :(, Installation will now restart")
         self.name="Error"
 

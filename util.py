@@ -22,7 +22,7 @@ def fancytyping(message:str):
     for i in message:
         sys.stdout.write(i+ " ")
         sys.stdout.flush()
-        time.sleep(0.15)
+        time.sleep(0.1)
 
 #take multiple lines of input with one function
 def multiinput(numfieldstoexpect,questions):
@@ -69,9 +69,15 @@ def switch(category,option):
             apps.classnotes()
         elif(option=="google"):
             apps.terminalbrowser()
+        elif(option=="canvas"):
+            
+            apps.canvasfunction(classes.User.getuser().lplatform.apiurl,classes.User.getuser().lplatform.apikey,classes.User.getuser().lplatform.uid)
 
 def filesave(fname):
     installpath=2
-    os.chdir()
+    try:
+     os.chdir("Files")
+    except:
+        print("Oops, file save did not work :(")
 
     

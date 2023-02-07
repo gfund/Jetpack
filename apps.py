@@ -4,7 +4,7 @@
 from tkinter import *
 import datetime
 import os
-
+from canvasapi import Canvas
 # globally declare the expression variable
 expression = ""
 
@@ -233,6 +233,27 @@ def terminalbrowser():
     from search import search as google
     google(query)
     
-      
+def canvasfunction(apiurl,apikey,userid):     
+  action=input("Canvas>")
+  API_URL = apiurl
+  # Canvas API key
+  API_KEY = apikey
+  canvas = Canvas(API_URL, API_KEY)
+ 
+  user = canvas.get_user(userid)
+
+  # Initialize a new Canvas object
+  if(action=="get courses"):
+     
+
+      courses = user.get_courses()
+      for i in courses:
+       print(i)
+      return courses
+  if(action=="get assignments"):
+       assignments=user.get_assignments()
+       for i in assignments:
+        print(i)
+       return assignments
 
 
