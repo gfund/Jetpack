@@ -2,7 +2,7 @@ import install
 import util
 import classes
 installdone=util.checkinstall()
-exitterms=["exit","quit","q","stop"]
+exitterms=["exit","quit","q","stop","close"]
 def programselection():
    selection=""
    while selection not in exitterms:

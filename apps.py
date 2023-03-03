@@ -222,7 +222,7 @@ def classnotes():
       date=datetime.date.today().strftime("%B %d, %Y")
       filedate=datetime.date.today().strftime("%m%d%Y")
       if(filedate[0]=='0'):
-        filedate=filedate[1:len(filedate)-1]
+        filedate=filedate[1:len(filedate)]
       file=open(f"{subject} {filedate}notes.md","w+")
       file.write(f"# {subject} {date} Notes\n")
       file.close()

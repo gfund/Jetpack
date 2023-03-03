@@ -1,0 +1,12 @@
+Basis Step
+
+n=0
+
+Proved that formulas are equal 
+
+Inductive Hypothesis: Suppose for some k>=0
+
+
+Consider p(k+1) by inductive Hypothesis
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!study division algorithm 
